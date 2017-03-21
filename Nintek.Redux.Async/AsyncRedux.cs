@@ -7,19 +7,19 @@ using Nintek.Utils;
 
 namespace Nintek.Redux
 {
-    public abstract class Redux<TAppState>
+    public class AsyncRedux<TAppState>
         where TAppState : new()
     {
         public static TAppState State { get; private set; }
-        
-        static ReducerDefinition[] _reducerDefinitions;
-        static Epic[] _epics;
 
-        static Redux()
+        static ReducerDefinition[] _reducerDefinitions;
+        static IEpic[] _epics;
+
+        static AsyncRedux()
         {
             State = new TAppState();
             _reducerDefinitions = new ReducerDefinition[0];
-            _epics = new Epic[0];
+            _epics = new IEpic[0];
         }
 
         public static void CombineReducer<TState, TReducer>()
@@ -32,27 +32,27 @@ namespace Nintek.Redux
         }
 
         public static void CreateEpic<TEpic>(Func<TEpic> epicFactory)
-            where TEpic : Epic
+            where TEpic : IEpic
         {
             var epic = epicFactory();
-            _epics = _epics.Concat(new[] { epic }).ToArray();
+            _epics = _epics.Concat(new IEpic[] { epic }).ToArray();
         }
 
-        public static void Dispatch<TAction>()
+        public static async Task DispatchAsync<TAction>()
             where TAction : Action
         {
-            var action = (Action) Activator.CreateInstance(typeof(TAction));
-            Dispatch(action);
+            var action = (Action)Activator.CreateInstance(typeof(TAction));
+            await DispatchAsync(action);
         }
 
-        public static void Dispatch<TAction, TPayload>(TPayload payload)
+        public static async Task DispatchAsync<TAction, TPayload>(TPayload payload)
             where TAction : Action<TPayload>
         {
-            var action = (Action) Activator.CreateInstance(typeof(TAction), payload);
-            Dispatch(action);
+            var action = (Action)Activator.CreateInstance(typeof(TAction), payload);
+            await DispatchAsync(action);
         }
 
-        static void Dispatch(Action action)
+        static async Task DispatchAsync(Action action)
         {
             var rootReducers = _reducerDefinitions
                 .Where(definition => definition.StateType == typeof(TAppState))
@@ -74,21 +74,36 @@ namespace Nintek.Redux
                 {
                     var state = property.GetValue(obj);
                     var newState = reducer.Reduce(state, action);
-                    property.SetValue(obj, newState);
+                    if (state != newState)
+                    {
+                        property.SetValue(obj, newState);
+                    }
                 }
             });
 
-            ExecuteEpics(action);
+            await ExecuteEpicsAsync(action);
         }
 
-        static void ExecuteEpics(Action action)
+        static async Task ExecuteEpicsAsync(Action action)
         {
             foreach (var epic in _epics)
             {
-                var outputActions = epic.Execute(action);
-                foreach (var outAction in outputActions)
+                IEnumerable<Action> outActions = Enumerable.Empty<Action>();
+
+                switch (epic)
                 {
-                    Dispatch(outAction);
+                    case Epic syncEpic:
+                        outActions = syncEpic.Execute(action);
+                        break;
+
+                    case AsyncEpic asyncEpic:
+                        outActions = await asyncEpic.ExecuteAsync(action);
+                        break;
+                }
+
+                foreach (var outAction in outActions)
+                {
+                    await DispatchAsync(outAction);
                 }
             }
         }

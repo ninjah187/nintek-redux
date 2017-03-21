@@ -25,7 +25,7 @@ namespace Nintek.Redux
                     return state;
                 }
 
-                return Reduce((TState) state, action);
+                return Reduce((TState)state, action);
             };
         }
 

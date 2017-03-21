@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nintek.Redux
+namespace Nintek.Redux.Samples.Currencies.Async.Services
 {
-    public interface IRedux<TAppState>
-        where TAppState : new()
+    public interface IHttpService
     {
-        TAppState State { get; }
+        Task<string> GetAsync(string url);
     }
 }

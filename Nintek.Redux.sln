@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nintek.Utils", "Nintek.Util
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nintek.Redux.Samples.Currencies", "Nintek.Redux.Samples.Currencies\Nintek.Redux.Samples.Currencies.csproj", "{BDB8D908-D36C-4894-BB66-9D843C8500C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nintek.Redux.Core", "Nintek.Redux.Core\Nintek.Redux.Core.csproj", "{FCB02637-DE99-4963-8BAC-155557DA04D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nintek.Redux.Async", "Nintek.Redux.Async\Nintek.Redux.Async.csproj", "{6951571B-8964-447D-9A08-984F4500389A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nintek.Redux.Samples.Currencies.Async", "Nintek.Redux.Samples.Currencies.Async\Nintek.Redux.Samples.Currencies.Async.csproj", "{6B9D0F47-78A2-4550-A505-0E471D3772B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +39,18 @@ Global
 		{BDB8D908-D36C-4894-BB66-9D843C8500C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDB8D908-D36C-4894-BB66-9D843C8500C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDB8D908-D36C-4894-BB66-9D843C8500C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCB02637-DE99-4963-8BAC-155557DA04D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCB02637-DE99-4963-8BAC-155557DA04D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCB02637-DE99-4963-8BAC-155557DA04D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCB02637-DE99-4963-8BAC-155557DA04D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6951571B-8964-447D-9A08-984F4500389A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6951571B-8964-447D-9A08-984F4500389A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6951571B-8964-447D-9A08-984F4500389A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6951571B-8964-447D-9A08-984F4500389A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B9D0F47-78A2-4550-A505-0E471D3772B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B9D0F47-78A2-4550-A505-0E471D3772B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B9D0F47-78A2-4550-A505-0E471D3772B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B9D0F47-78A2-4550-A505-0E471D3772B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

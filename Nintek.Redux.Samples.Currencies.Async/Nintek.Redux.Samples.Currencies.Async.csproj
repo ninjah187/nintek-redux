@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BDB8D908-D36C-4894-BB66-9D843C8500C0}</ProjectGuid>
+    <ProjectGuid>{6B9D0F47-78A2-4550-A505-0E471D3772B1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Nintek.Redux.Samples.Currencies</RootNamespace>
-    <AssemblyName>Nintek.Redux.Samples.Currencies</AssemblyName>
+    <RootNamespace>Nintek.Redux.Samples.Currencies.Async</RootNamespace>
+    <AssemblyName>Nintek.Redux.Samples.Currencies.Async</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,23 +44,35 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Store\App.cs" />
+    <Compile Include="Services\HttpService.cs" />
+    <Compile Include="Services\IHttpService.cs" />
     <Compile Include="Store\AppRedux.cs" />
-    <Compile Include="Store\CurrencyRates.cs" />
-    <Compile Include="Store\Prompts.cs" />
+    <Compile Include="Store\App\Epics\DisplayMessage.cs" />
+    <Compile Include="Store\App\State.cs" />
+    <Compile Include="Store\Prompt\Actions\Display.cs" />
+    <Compile Include="Store\Prompt\Epics\Display.cs" />
+    <Compile Include="Store\Prompt\Reducer.cs" />
+    <Compile Include="Store\Prompt\State.cs" />
+    <Compile Include="Store\Request\Actions\Fetch\Failure.cs" />
+    <Compile Include="Store\Request\Actions\Fetch\Start.cs" />
+    <Compile Include="Store\Request\Actions\Fetch\Success.cs" />
+    <Compile Include="Store\Request\Epics\Fetch.cs" />
+    <Compile Include="Store\Request\Reducer.cs" />
+    <Compile Include="Store\Request\State.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Nintek.Redux.Async\Nintek.Redux.Async.csproj">
+      <Project>{6951571b-8964-447d-9a08-984f4500389a}</Project>
+      <Name>Nintek.Redux.Async</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nintek.Redux.Core\Nintek.Redux.Core.csproj">
       <Project>{fcb02637-de99-4963-8bac-155557da04d2}</Project>
       <Name>Nintek.Redux.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Nintek.Redux\Nintek.Redux.csproj">
-      <Project>{bffe0ad2-5d4c-48ba-92de-b8301b15aab3}</Project>
-      <Name>Nintek.Redux</Name>
-    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
