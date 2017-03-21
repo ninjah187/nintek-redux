@@ -18,6 +18,12 @@ namespace Nintek.Utils
                 if (!property.PropertyType.IsPrimitiveLike())
                 {
                     var value = property.GetValue(obj);
+
+                    if (value == null)
+                    {
+                        continue;
+                    }
+
                     value.WalkOverProperties(action);
                 }
             }

@@ -20,7 +20,7 @@ namespace Nintek.Redux
         {
             ReduceFunc = (state, action) =>
             {
-                if (!state.GetType().IsAssignableFrom(typeof(TState)))
+                if (state == null || !state.GetType().IsAssignableFrom(typeof(TState)))
                 {
                     return state;
                 }
