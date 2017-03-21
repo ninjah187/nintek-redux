@@ -10,15 +10,12 @@ namespace Nintek.Redux.Samples.Store
     {
         public class Actions
         {
-            public static string GREET_USER_ON_CONSOLE { get; }
-                = "GREETING__GREET_USER";
-
             public class GreetUser : Action
             {
-                public GreetUser()
-                    : base(GREET_USER_ON_CONSOLE)
-                {
-                }
+            }
+
+            public class UserGreeted : Action
+            {
             }
         }
 
@@ -26,13 +23,14 @@ namespace Nintek.Redux.Samples.Store
         {
             public class GreetUser : Epic
             {
-                public override void Execute(Action input)
+                public override IEnumerable<Action> Execute(Action input)
                 {
                     switch (input)
                     {
                         case Actions.GreetUser action:
                             Console.WriteLine($"Hi, {AppRedux.State.User.Name}!");
-                            break;
+                            yield return new Actions.UserGreeted();
+                            yield break;
                     }
                 }
             }

@@ -85,7 +85,11 @@ namespace Nintek.Redux
         {
             foreach (var epic in _epics)
             {
-                epic.Execute(action);
+                var outputActions = epic.Execute(action);
+                foreach (var outAction in outputActions)
+                {
+                    Dispatch(outAction);
+                }
             }
         }
     }

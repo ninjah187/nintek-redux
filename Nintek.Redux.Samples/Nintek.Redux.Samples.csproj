@@ -43,15 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actions\ChangeNameAction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Store\App.cs" />
     <Compile Include="Store\AppState.cs" />
     <Compile Include="Store\Greeting\Greeting.cs" />
-    <Compile Include="Store\HelloWorld\HelloWorld.cs" />
-    <Compile Include="Store\HelloWorld\PrintMessageOnConsoleAction.cs" />
-    <Compile Include="Store\HelloWorld\PrintMessageOnConsoleEpic.cs" />
     <Compile Include="Store\AppRedux.cs" />
     <Compile Include="Store\User.cs" />
   </ItemGroup>
@@ -64,10 +60,7 @@
       <Name>Nintek.Redux</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reducers\" />
-    <Folder Include="State\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

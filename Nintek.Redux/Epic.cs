@@ -8,6 +8,6 @@ namespace Nintek.Redux
 {
     public abstract class Epic
     {
-        public abstract void Execute(Action input);
+        public abstract IEnumerable<Action> Execute(Action input);
     }
 }

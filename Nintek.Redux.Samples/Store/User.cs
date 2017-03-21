@@ -25,13 +25,9 @@ namespace Nintek.Redux.Samples.Store
 
         public class Actions
         {
-            public static string SIGN_IN { get; }
-                = $"{nameof(User)}__{nameof(SIGN_IN)}";
-
             public class SignIn : Action<string>
             {
-                public SignIn(string payload) 
-                    : base(SIGN_IN, payload)
+                public SignIn(string payload) : base(payload)
                 {
                 }
             }
