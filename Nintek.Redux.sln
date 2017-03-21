@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nintek.Redux", "Nintek.Redux\Nintek.Redux.csproj", "{BFFE0AD2-5D4C-48BA-92DE-B8301B15AAB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nintek.Redux.Samples", "Nintek.Redux.Samples\Nintek.Redux.Samples.csproj", "{8FE91DAE-D23D-4E61-930C-62099E12B12A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nintek.Utils", "Nintek.Utils\Nintek.Utils.csproj", "{7830FDAB-AA58-458C-9EFF-3491025A169D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFFE0AD2-5D4C-48BA-92DE-B8301B15AAB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFFE0AD2-5D4C-48BA-92DE-B8301B15AAB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFFE0AD2-5D4C-48BA-92DE-B8301B15AAB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFFE0AD2-5D4C-48BA-92DE-B8301B15AAB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FE91DAE-D23D-4E61-930C-62099E12B12A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FE91DAE-D23D-4E61-930C-62099E12B12A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FE91DAE-D23D-4E61-930C-62099E12B12A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FE91DAE-D23D-4E61-930C-62099E12B12A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7830FDAB-AA58-458C-9EFF-3491025A169D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7830FDAB-AA58-458C-9EFF-3491025A169D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7830FDAB-AA58-458C-9EFF-3491025A169D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7830FDAB-AA58-458C-9EFF-3491025A169D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
