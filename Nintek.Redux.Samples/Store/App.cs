@@ -13,9 +13,9 @@ namespace Nintek.Redux.Samples.Store
             public static string TITLE__PRINT_ON_CONSOLE { get; } 
                 = $"{nameof(App)}__{nameof(TITLE__PRINT_ON_CONSOLE)}";
 
-            public class PrintTitleOnConsole : Action
+            public class PrintTitle : Action
             {
-                public PrintTitleOnConsole()
+                public PrintTitle()
                     : base(TITLE__PRINT_ON_CONSOLE)
                 {
                 }
@@ -24,13 +24,13 @@ namespace Nintek.Redux.Samples.Store
 
         public class Epics
         {
-            public class PrintTitleOnConsole : Epic
+            public class PrintTitle : Epic
             {
                 public override void Execute(Action action)
                 {
                     switch (action)
                     {
-                        case Actions.PrintTitleOnConsole act:
+                        case Actions.PrintTitle act:
                             Console.WriteLine($">> {AppRedux.State.Title}");
                             break;
                     }

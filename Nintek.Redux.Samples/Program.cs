@@ -13,7 +13,9 @@ namespace Nintek.Redux.Samples
         {
             AppRedux.Initialize();
 
-            AppRedux.Dispatch<App.Actions.PrintTitleOnConsole>();
+            AppRedux.Dispatch<App.Actions.PrintTitle>();
+            AppRedux.Dispatch<User.Actions.SignIn, string>("Karol");
+            AppRedux.Dispatch<Greeting.Actions.GreetUser>();
             
             Console.ReadKey();
         }

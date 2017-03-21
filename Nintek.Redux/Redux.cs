@@ -11,15 +11,13 @@ namespace Nintek.Redux
         where TAppState : new()
     {
         public static TAppState State { get; private set; }
-
-        //static Reducer[] _reducers;
+        
         static ReducerDefinition[] _reducerDefinitions;
         static Epic[] _epics;
 
         static Redux()
         {
             State = new TAppState();
-            //_reducers = new Reducer[0];
             _reducerDefinitions = new ReducerDefinition[0];
             _epics = new Epic[0];
         }
@@ -31,7 +29,6 @@ namespace Nintek.Redux
             _reducerDefinitions = _reducerDefinitions
                 .Concat(new[] { new ReducerDefinition(typeof(TState), reducer) })
                 .ToArray();
-            //_reducers = _reducers.Concat(new[] { reducer }).ToArray();
         }
 
         public static void CreateEpic<TEpic>(Func<TEpic> epicFactory)
@@ -45,27 +42,40 @@ namespace Nintek.Redux
             where TAction : Action
         {
             var action = (Action) Activator.CreateInstance(typeof(TAction));
-            
-            
-
-            ExecuteEpics(action);
+            Dispatch(action);
         }
 
         public static void Dispatch<TAction, TPayload>(TPayload payload)
             where TAction : Action<TPayload>
         {
             var action = (Action) Activator.CreateInstance(typeof(TAction), payload);
+            Dispatch(action);
+        }
 
-            //foreach (var reducer in _reducers)
-            //{
-            //    //State = reducer.Reduce<TAppState, Action>(State, action);
-            //}
+        static void Dispatch(Action action)
+        {
+            var rootReducers = _reducerDefinitions
+                .Where(definition => definition.StateType == typeof(TAppState))
+                .Select(definition => definition.Reducer);
 
-            //var newState = ;
+            foreach (var reducer in rootReducers)
+            {
+                var newState = reducer.Reduce(State, action);
+                State = (TAppState)newState;
+            }
 
             State.WalkOverProperties((obj, property) =>
             {
-                
+                var reducers = _reducerDefinitions
+                    .Where(definition => definition.StateType == property.PropertyType)
+                    .Select(definition => definition.Reducer);
+
+                foreach (var reducer in reducers)
+                {
+                    var state = property.GetValue(obj);
+                    var newState = reducer.Reduce(state, action);
+                    property.SetValue(obj, newState);
+                }
             });
 
             ExecuteEpics(action);

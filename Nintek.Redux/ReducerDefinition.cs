@@ -14,7 +14,7 @@ namespace Nintek.Redux
         public ReducerDefinition(Type stateType, Reducer reducer)
         {
             StateType = stateType;
-            Reducer = Reducer;
+            Reducer = reducer;
         }
     }
 }

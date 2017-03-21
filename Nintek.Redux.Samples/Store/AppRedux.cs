@@ -13,7 +13,8 @@ namespace Nintek.Redux.Samples.Store
         {
             CombineReducer<User.State, User.Reducer>();
 
-            CreateEpic(() => new App.Epics.PrintTitleOnConsole());
+            CreateEpic(() => new App.Epics.PrintTitle());
+            CreateEpic(() => new Greeting.Epics.GreetUser());
         }
     }
 }

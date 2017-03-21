@@ -10,7 +10,7 @@ namespace Nintek.Redux.Samples.Store
     {
         public class State
         {
-            public string Name { get; }
+            public string Name { get; private set; }
 
             public State()
             {

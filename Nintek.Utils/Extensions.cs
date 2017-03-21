@@ -15,12 +15,15 @@ namespace Nintek.Utils
             foreach (var property in type.GetProperties())
             {
                 action(obj, property);
-                if (!property.PropertyType.IsPrimitive)
+                if (!property.PropertyType.IsPrimitiveLike())
                 {
                     var value = property.GetValue(obj);
                     value.WalkOverProperties(action);
                 }
             }
         }
+
+        public static bool IsPrimitiveLike(this Type type)
+            => type.IsPrimitive || type == typeof(string);
     }
 }
