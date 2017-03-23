@@ -40,18 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsyncEpic.cs" />
-    <Compile Include="AsyncRedux.cs" />
+    <Compile Include="EpicAsync.cs" />
+    <Compile Include="Redux.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nintek.Redux.Core\Nintek.Redux.Core.csproj">
       <Project>{fcb02637-de99-4963-8bac-155557da04d2}</Project>
       <Name>Nintek.Redux.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nintek.Utils\Nintek.Utils.csproj">
-      <Project>{7830fdab-aa58-458c-9eff-3491025a169d}</Project>
-      <Name>Nintek.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

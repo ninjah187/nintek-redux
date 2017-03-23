@@ -10,11 +10,11 @@ namespace Nintek.Redux.Samples.Store
     {
         public class Actions
         {
-            public class GreetUser : Action
+            public class GreetUser : IAction
             {
             }
 
-            public class UserGreeted : Action
+            public class UserGreeted : IAction
             {
             }
         }
@@ -23,7 +23,7 @@ namespace Nintek.Redux.Samples.Store
         {
             public class GreetUser : Epic
             {
-                public override IEnumerable<Action> Execute(Action input)
+                public override IEnumerable<IAction> Execute(IAction input)
                 {
                     switch (input)
                     {

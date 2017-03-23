@@ -9,10 +9,13 @@ namespace Nintek.Redux.Samples.Currencies.Async.Store.Request.Actions.Fetch
     /// <summary>
     /// Payload is error message.
     /// </summary>
-    public class Failure : Action<string>
+    public class Failure : IAction<string>
     {
-        public Failure(string payload) : base(payload)
+        public string Payload { get; }
+
+        public Failure(string payload)
         {
+            Payload = payload;
         }
     }
 }

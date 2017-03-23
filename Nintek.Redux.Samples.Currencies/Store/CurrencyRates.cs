@@ -52,14 +52,17 @@ namespace Nintek.Redux.Samples.Currencies.Store
         {
             public class Fetch
             {
-                public class Request : Action
+                public class Request : IAction
                 {
                 }
 
-                public class Success : Action<string>
+                public class Success : IAction<string>
                 {
-                    public Success(string payload) : base(payload)
+                    public string Payload { get; }
+
+                    public Success(string payload)
                     {
+                        Payload = payload;
                     }
                 }
             }
@@ -67,7 +70,7 @@ namespace Nintek.Redux.Samples.Currencies.Store
 
         public class Reducer : Reducer<State>
         {
-            public override State Reduce(State state, Action action)
+            public override State Reduce(State state, IAction action)
             {
                 switch (action)
                 {
@@ -89,7 +92,7 @@ namespace Nintek.Redux.Samples.Currencies.Store
         {
             public class Request : Epic
             {
-                public override IEnumerable<Action> Execute(Action input)
+                public override IEnumerable<IAction> Execute(IAction input)
                 {
                     switch (input)
                     {

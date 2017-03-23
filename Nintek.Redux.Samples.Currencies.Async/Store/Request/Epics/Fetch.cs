@@ -7,7 +7,7 @@ using Nintek.Redux.Samples.Currencies.Async.Services;
 
 namespace Nintek.Redux.Samples.Currencies.Async.Store.Request.Epics
 {
-    public class Fetch : AsyncEpic
+    public class Fetch : EpicAsync
     {
         readonly IHttpService _http;
 
@@ -16,9 +16,9 @@ namespace Nintek.Redux.Samples.Currencies.Async.Store.Request.Epics
             _http = new HttpService();
         }
 
-        public override async Task<IEnumerable<Action>> ExecuteAsync(Action input)
+        public override async Task<IEnumerable<IAction>> ExecuteAsync(IAction input)
         {
-            var output = new List<Action>();
+            var output = new List<IAction>();
 
             switch (input)
             {

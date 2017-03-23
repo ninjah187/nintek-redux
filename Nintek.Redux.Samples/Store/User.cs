@@ -25,17 +25,20 @@ namespace Nintek.Redux.Samples.Store
 
         public class Actions
         {
-            public class SignIn : Action<string>
+            public class SignIn : IAction<string>
             {
-                public SignIn(string payload) : base(payload)
+                public string Payload { get; }
+
+                public SignIn(string payload)
                 {
+                    Payload = payload;
                 }
             }
         }
 
         public class Reducer : Reducer<State>
         {
-            public override State Reduce(State state, Action input)
+            public override State Reduce(State state, IAction input)
             {
                 switch (input)
                 {

@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 
-namespace Nintek.Utils
+namespace Nintek.Redux.Core
 {
-    public static class Extensions
+    public static class UtilityExtensions
     {
         public static void WalkOverProperties<TObj>(this TObj obj, Action<object, PropertyInfo> action)
         {
-            var type = obj.GetType();
+            //var type = obj.GetType();
+            var type = typeof(TObj);
             foreach (var property in type.GetProperties())
             {
                 action(obj, property);

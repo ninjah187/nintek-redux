@@ -9,10 +9,13 @@ namespace Nintek.Redux.Samples.Currencies.Async.Store.Request.Actions.Fetch
     /// <summary>
     /// Payload is fetched data.
     /// </summary>
-    public class Success : Action<string>
+    public class Success : IAction<string>
     {
-        public Success(string payload) : base(payload)
+        public string Payload { get; }
+
+        public Success(string payload)
         {
+            Payload = payload;
         }
     }
 }

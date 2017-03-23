@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace Nintek.Redux
 {
-    public interface IEpic
+    public abstract class EpicAsync : IEpic
     {
-    }
-
-    public abstract class Epic : IEpic
-    {
-        public abstract IEnumerable<IAction> Execute(IAction input);
+        public abstract Task<IEnumerable<IAction>> ExecuteAsync(IAction input);
     }
 }

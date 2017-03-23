@@ -8,10 +8,11 @@ using Nintek.Redux.Samples.Currencies.Async.Services;
 
 namespace Nintek.Redux.Samples.Currencies.Async.Store
 {
-    public class AppRedux : AsyncRedux<App.State>
+    public class AppRedux : Redux<App.State>
     {
         public static void Init()
         {
+            CreateEpic(() => new App.Epics.LoggerEpic());
             CreateEpic(() => new App.Epics.DisplayMessage());
 
             CombineReducer<Prompt.State, Prompt.Reducer>();

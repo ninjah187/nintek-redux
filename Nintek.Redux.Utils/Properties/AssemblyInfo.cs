@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Nintek.Utils")]
+[assembly: AssemblyTitle("Nintek.Redux.Utils")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Nintek.Utils")]
+[assembly: AssemblyProduct("Nintek.Redux.Utils")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("7830fdab-aa58-458c-9eff-3491025a169d")]
+[assembly: Guid("f9eac47a-66d0-4c1d-a5f0-dbb4c3cc5e83")]
 
 // Version information for an assembly consists of the following four values:
 //

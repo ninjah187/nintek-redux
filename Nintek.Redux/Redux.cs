@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Nintek.Utils;
+using Nintek.Redux.Core;
 
 namespace Nintek.Redux
 {
@@ -39,20 +39,20 @@ namespace Nintek.Redux
         }
 
         public static void Dispatch<TAction>()
-            where TAction : Action
+            where TAction : IAction
         {
-            var action = (Action) Activator.CreateInstance(typeof(TAction));
+            var action = (IAction) Activator.CreateInstance(typeof(TAction));
             Dispatch(action);
         }
 
         public static void Dispatch<TAction, TPayload>(TPayload payload)
-            where TAction : Action<TPayload>
+            where TAction : IAction<TPayload>
         {
-            var action = (Action) Activator.CreateInstance(typeof(TAction), payload);
+            var action = (IAction) Activator.CreateInstance(typeof(TAction), payload);
             Dispatch(action);
         }
 
-        static void Dispatch(Action action)
+        static void Dispatch(IAction action)
         {
             var rootReducers = _reducerDefinitions
                 .Where(definition => definition.StateType == typeof(TAppState))
@@ -81,7 +81,7 @@ namespace Nintek.Redux
             ExecuteEpics(action);
         }
 
-        static void ExecuteEpics(Action action)
+        static void ExecuteEpics(IAction action)
         {
             foreach (var epic in _epics)
             {

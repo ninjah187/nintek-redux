@@ -24,19 +24,22 @@ namespace Nintek.Redux.Samples.Currencies.Store
 
         public class Actions
         {
-            public class PromptUser : Action { }
+            public class PromptUser : IAction { }
 
-            public class UserAnswered : Action<string>
+            public class UserAnswered : IAction<string>
             {
-                public UserAnswered(string payload) : base(payload)
+                public string Payload { get; }
+
+                public UserAnswered(string payload)
                 {
+                    Payload = payload;
                 }
             }
         }
 
         public class Reducer : Reducer<State>
         {
-            public override State Reduce(State state, Action action)
+            public override State Reduce(State state, IAction action)
             {
                 switch (action)
                 {
@@ -53,7 +56,7 @@ namespace Nintek.Redux.Samples.Currencies.Store
         {
             public class PromptUser : Epic
             {
-                public override IEnumerable<Action> Execute(Action input)
+                public override IEnumerable<IAction> Execute(IAction input)
                 {
                     switch (input)
                     {

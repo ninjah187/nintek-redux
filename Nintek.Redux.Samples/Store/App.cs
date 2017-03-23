@@ -10,11 +10,11 @@ namespace Nintek.Redux.Samples.Store
     {
         public class Actions
         {
-            public class PrintTitle : Action
+            public class PrintTitle : IAction
             {
             }
 
-            public class TitlePrinted : Action
+            public class TitlePrinted : IAction
             {
             }
         }
@@ -23,7 +23,7 @@ namespace Nintek.Redux.Samples.Store
         {
             public class PrintTitle : Epic
             {
-                public override IEnumerable<Action> Execute(Action action)
+                public override IEnumerable<IAction> Execute(IAction action)
                 {
                     switch (action)
                     {

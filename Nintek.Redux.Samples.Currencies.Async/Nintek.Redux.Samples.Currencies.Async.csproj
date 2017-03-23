@@ -48,6 +48,7 @@
     <Compile Include="Services\IHttpService.cs" />
     <Compile Include="Store\AppRedux.cs" />
     <Compile Include="Store\App\Epics\DisplayMessage.cs" />
+    <Compile Include="Store\App\Epics\LoggerEpic.cs" />
     <Compile Include="Store\App\State.cs" />
     <Compile Include="Store\Prompt\Actions\Display.cs" />
     <Compile Include="Store\Prompt\Epics\Display.cs" />

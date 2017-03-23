@@ -8,9 +8,9 @@ namespace Nintek.Redux
 {
     public class Reducer
     {
-        protected Func<object, Action, object> ReduceFunc { get; set; }
+        protected Func<object, IAction, object> ReduceFunc { get; set; }
 
-        public object Reduce(object state, Action action)
+        public object Reduce(object state, IAction action)
             => ReduceFunc(state, action);
     }
 
@@ -29,6 +29,6 @@ namespace Nintek.Redux
             };
         }
 
-        public abstract TState Reduce(TState state, Action action);
+        public abstract TState Reduce(TState state, IAction action);
     }
 }

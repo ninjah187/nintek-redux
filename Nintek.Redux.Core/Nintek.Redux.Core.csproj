@@ -40,11 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action.cs" />
+    <Compile Include="IAction.cs" />
     <Compile Include="Epic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reducer.cs" />
     <Compile Include="ReducerDefinition.cs" />
+    <Compile Include="UtilityExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

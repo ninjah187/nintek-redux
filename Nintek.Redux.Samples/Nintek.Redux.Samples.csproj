@@ -55,6 +55,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Nintek.Redux.Core\Nintek.Redux.Core.csproj">
+      <Project>{fcb02637-de99-4963-8bac-155557da04d2}</Project>
+      <Name>Nintek.Redux.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nintek.Redux\Nintek.Redux.csproj">
       <Project>{bffe0ad2-5d4c-48ba-92de-b8301b15aab3}</Project>
       <Name>Nintek.Redux</Name>

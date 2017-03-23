@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Nintek.Utils;
+using Nintek.Redux.Core;
 
 namespace Nintek.Redux
 {
-    public class AsyncRedux<TAppState>
+    public class Redux<TAppState>
         where TAppState : new()
     {
         public static TAppState State { get; private set; }
@@ -15,7 +15,7 @@ namespace Nintek.Redux
         static ReducerDefinition[] _reducerDefinitions;
         static IEpic[] _epics;
 
-        static AsyncRedux()
+        static Redux()
         {
             State = new TAppState();
             _reducerDefinitions = new ReducerDefinition[0];
@@ -39,20 +39,20 @@ namespace Nintek.Redux
         }
 
         public static async Task DispatchAsync<TAction>()
-            where TAction : Action
+            where TAction : IAction
         {
-            var action = (Action)Activator.CreateInstance(typeof(TAction));
+            var action = (IAction)Activator.CreateInstance(typeof(TAction));
             await DispatchAsync(action);
         }
 
         public static async Task DispatchAsync<TAction, TPayload>(TPayload payload)
-            where TAction : Action<TPayload>
+            where TAction : IAction<TPayload>
         {
-            var action = (Action)Activator.CreateInstance(typeof(TAction), payload);
+            var action = (IAction)Activator.CreateInstance(typeof(TAction), payload);
             await DispatchAsync(action);
         }
 
-        static async Task DispatchAsync(Action action)
+        static async Task DispatchAsync(IAction action)
         {
             var rootReducers = _reducerDefinitions
                 .Where(definition => definition.StateType == typeof(TAppState))
@@ -84,11 +84,11 @@ namespace Nintek.Redux
             await ExecuteEpicsAsync(action);
         }
 
-        static async Task ExecuteEpicsAsync(Action action)
+        static async Task ExecuteEpicsAsync(IAction action)
         {
             foreach (var epic in _epics)
             {
-                IEnumerable<Action> outActions = Enumerable.Empty<Action>();
+                IEnumerable<IAction> outActions = Enumerable.Empty<IAction>();
 
                 switch (epic)
                 {
@@ -96,7 +96,7 @@ namespace Nintek.Redux
                         outActions = syncEpic.Execute(action);
                         break;
 
-                    case AsyncEpic asyncEpic:
+                    case EpicAsync asyncEpic:
                         outActions = await asyncEpic.ExecuteAsync(action);
                         break;
                 }

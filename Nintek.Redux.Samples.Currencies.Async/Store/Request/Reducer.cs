@@ -8,7 +8,7 @@ namespace Nintek.Redux.Samples.Currencies.Async.Store.Request
 {
     public class Reducer : Reducer<State>
     {
-        public override State Reduce(State state, Action action)
+        public override State Reduce(State state, IAction action)
         {
             switch (action)
             {

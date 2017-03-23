@@ -9,10 +9,13 @@ namespace Nintek.Redux.Samples.Currencies.Async.Store.Request.Actions.Fetch
     /// <summary>
     /// Payload is URL of data.
     /// </summary>
-    public class Start : Action<string>
+    public class Start : IAction<string>
     {
-        public Start(string payload) : base(payload)
+        public string Payload { get; }
+
+        public Start(string payload)
         {
+            Payload = payload;
         }
     }
 }
